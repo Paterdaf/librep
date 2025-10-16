@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 12:53:06 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 14:01:12 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/16 12:34:55 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/16 12:59:26 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "libtest.h"
 
-static int ft_isupper(int c)
+int	main(void)
 {
-	return ((unsigned int)(c - 'A') < 26);
-}
+	int passed;
+	int total;
 
-static int ft_islower(int c)
-{
-	return ((unsigned int)(c-'a') < 26);
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_isupper(c) || ft_islower(c));
+	passed = 0;
+	passed += create_isalpha_tests();
+	passed += create_isdigit_tests();
+	passed += create_isalnum_tests();
+	passed += create_isascii_tests();
+	total = 4;
+	printf("Passed %d out of %d\n", passed, total);
+	return (0);
 }

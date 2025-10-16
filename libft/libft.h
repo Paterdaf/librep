@@ -6,14 +6,14 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:09:48 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/14 14:43:46 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/16 14:15:34 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-typedef unsigned long int size_t;
+#include <stddef.h>
 
 int		ft_isalpha(int c);	
 int		ft_isdigit(int c);

@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testlib.c                                          :+:      :+:    :+:   */
+/*   libtest.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 13:20:14 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/14 14:24:04 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/14 13:49:59 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/16 12:59:59 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "testlib.h"
 
-int	main(void)
+#ifndef TESTLIB_H
+# define TESTLIB_H
+
+#include <stdio.h>
+#include <ctype.h>
+
+typedef struct s_test_unit
 {
-	printf(isalpha() = ft_isalpha());
-	return (0);
-}
+	char		*desc;
+	int			c;
+}	t_test_unit;
+
+int create_isalpha_tests(void);
+int create_isdigit_tests(void);
+int create_isalnum_tests(void);
+int create_isascii_tests(void);
+
+# endif

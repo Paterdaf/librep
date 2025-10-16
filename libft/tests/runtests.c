@@ -1,27 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   runtests.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 12:53:06 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 14:01:12 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/16 15:10:09 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/16 15:10:51 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-static int ft_isupper(int c)
-{
-	return ((unsigned int)(c - 'A') < 26);
-}
-
-static int ft_islower(int c)
-{
-	return ((unsigned int)(c-'a') < 26);
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_isupper(c) || ft_islower(c));
-}
+nt run_tests(t_test_unit *tests, int count

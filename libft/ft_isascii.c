@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 12:53:06 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 14:01:12 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/16 12:54:16 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/16 12:56:45 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-static int ft_isupper(int c)
+int	ft_isascii(int c)
 {
-	return ((unsigned int)(c - 'A') < 26);
-}
-
-static int ft_islower(int c)
-{
-	return ((unsigned int)(c-'a') < 26);
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_isupper(c) || ft_islower(c));
+	return (c >= 0 && c <= 127);
 }
