@@ -1,9 +1,0 @@
-TODO :
-1. modifier les fonctions suivantes pour obtenir la valeur de retour correcte
-	1.a. isalpha
-	1.b. isdigit
-	1.c. isalnum
-2. modifier mon unite de test pour prendre les fonctions en parametre
-3. modifier mont unite de test pour structurer les tests
-4. ecrire plus de fonctions
-

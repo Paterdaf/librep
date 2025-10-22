@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_isalnum.c                                     :+:      :+:    :+:   */
+/*   test_isalpha.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 10:18:00 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 12:42:45 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/14 13:20:14 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/20 16:11:09 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libtest.h"
-#include "../ft_isalnum.c"
+#include "../ft_isalpha.c"
 
-int run_isalnum_tests(t_test_unit *tests, int count)
+int run_isalpha_tests(t_test_unit *tests, int count)
 {
 	int	i;
 	int error;
@@ -24,23 +23,15 @@ int run_isalnum_tests(t_test_unit *tests, int count)
 	error = 0;
 	while (i < count)
 	{
-		result = ft_isalnum(tests[i].c);
-		expected_result = isalnum(tests[i].c);
-		if (result != expected_result)
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-			error = -1;
-		}
-		else
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-		}
+		result = ft_isalpha(tests[i].c);
+		expected_result = isalpha(tests[i].c);
+		error += !(print_result((result == expected_result), tests[i].desc, i+1));
 		i++;
 	}
 	return (error);
 }
 
-int	create_isalnum_tests(void)
+int	create_isalpha_tests(void)
 {
 	int count;
 	t_test_unit tests[] =
@@ -60,8 +51,7 @@ int	create_isalnum_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	
+	printf("isalpha :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	run_isalnum_tests(tests, count);
-	return (0);
+	return (run_is_tests(count, tests, isalpha, ft_isalpha));
 }

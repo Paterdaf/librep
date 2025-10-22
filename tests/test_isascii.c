@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:18:00 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 12:58:01 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/20 16:11:49 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,7 @@ int run_isascii_tests(t_test_unit *tests, int count)
 	{
 		result = ft_isascii(tests[i].c);
 		expected_result = isascii(tests[i].c);
-		if (result != expected_result)
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-			error = -1;
-		}
-		else
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-		}
+		error += !(print_result((result == expected_result), tests[i].desc, i+1));
 		i++;
 	}
 	return (error);
@@ -60,8 +52,7 @@ int	create_isascii_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	
+	printf("isascii :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	run_isascii_tests(tests, count);
-	return (0);
+	return(run_is_tests(count, tests, isascii, ft_isascii));
 }

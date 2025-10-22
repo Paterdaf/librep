@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   test_isprint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 10:05:01 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/21 10:09:28 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/16 10:18:00 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/20 15:53:40 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libtest.h"
+#include "../ft_isprint.c"
+
+int	create_isprint_tests(void)
 {
-	return (c >= '0' && c <= '9');
+	int i;
+	int error;
+	int result;
+	int expected_result;
+
+	error = 0;
+	i = 0;
+	while (i < 128)
+	{
+		result = ft_isprint(i);
+		expected_result = isprint(i);
+		error += !(print_result((result == expected_result), "i :", i+1));
+		i++;
+	}
+	return (error);
 }

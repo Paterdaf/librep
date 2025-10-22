@@ -1,8 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 ALTFILES =  -I. -L.. -lft
-CFILES = $(wildcard test_*.c) main.c
-OFILES = $(CFILES:.c=.o)
+CFILES = $(wildcard *.c)
 LIBNAME = libft.a
 HEADERS = libft.h
 
@@ -12,7 +11,7 @@ main.o:
 	$(CC) $(FLAGS) $(CFILES) -o main.o $(ALTFILES)
 
 clean:
-	rm -f $(OFILES)
+	rm -f main.o
 
 re: clean main.o
 

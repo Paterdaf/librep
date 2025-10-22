@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:07:54 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 12:43:05 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/20 16:12:24 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libtest.h"
@@ -25,15 +25,7 @@ int run_isdigit_tests(t_test_unit *tests, int count)
 	{
 		result = ft_isdigit(tests[i].c);
 		expected_result = isdigit(tests[i].c);
-		if (result != expected_result)
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-			error = -1;
-		}
-		else
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-		}
+		error += !(print_result((result == expected_result), tests[i].desc, i+1));
 		i++;
 	}
 	return (error);
@@ -59,8 +51,7 @@ int	create_isdigit_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	
+	printf("isdigit :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	run_isdigit_tests(tests, count);
-	return (0);
+	return(run_is_tests(count, tests, isdigit, ft_isdigit));
 }

@@ -1,45 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_isalpha.c                                     :+:      :+:    :+:   */
+/*   test_isalnum.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 13:20:14 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 12:43:17 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/16 10:18:00 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/20 16:10:23 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libtest.h"
-#include "../ft_isalpha.c"
+#include "../ft_isalnum.c"
 
-int run_isalpha_tests(t_test_unit *tests, int count)
-{
-	int	i;
-	int error;
-	int	result;
-	int	expected_result;
-
-	i = 0;
-	error = 0;
-	while (i < count)
-	{
-		result = ft_isalpha(tests[i].c);
-		expected_result = isalpha(tests[i].c);
-		if (result != expected_result)
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-			error = -1;
-		}
-		else
-		{
-			printf("[%d] %s\nExpected \"%d\", got \"%d\"\n", i+1, tests[i].desc, expected_result, result);
-		}
-		i++;
-	}
-	return (error);
-}
-
-int	create_isalpha_tests(void)
+int	create_isalnum_tests(void)
 {
 	int count;
 	t_test_unit tests[] =
@@ -59,8 +33,7 @@ int	create_isalpha_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	
+	printf("isalnum :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	run_isalpha_tests(tests, count);
-	return (0);
+	return(run_is_tests(count, tests, isalnum, ft_isalnum));
 }

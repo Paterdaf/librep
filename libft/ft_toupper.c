@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 12:34:55 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 12:59:26 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/21 15:30:52 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/21 15:51:49 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libtest.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_toupper(int c)
 {
-	int passed;
-	int total;
-
-	passed = 0;
-	passed += create_isalpha_tests();
-	passed += create_isdigit_tests();
-	passed += create_isalnum_tests();
-	passed += create_isascii_tests();
-	total = 4;
-	printf("Passed %d out of %d\n", passed, total);
-	return (0);
+	if (ft_isalpha(c) && c > 'Z')
+		c -= 32;
+	return (c);
 }
