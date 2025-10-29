@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 15:30:52 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/21 15:51:49 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:57:09 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,5 +15,7 @@ int	ft_toupper(int c)
 {
 	if (ft_isalpha(c) && c > 'Z')
 		c -= 32;
+	if (c < 0 && c >= -128)
+		return ((unsigned char)c);
 	return (c);
 }

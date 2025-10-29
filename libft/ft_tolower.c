@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 15:36:42 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/21 15:51:25 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:58:11 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,5 +15,7 @@ int	ft_tolower(int c)
 {
 	if (ft_isalpha(c) && c < 'a')
 		c += 32;
+	if (c < 0 && c >= -128)
+		return ((unsigned char)c);
 	return (c);
 }

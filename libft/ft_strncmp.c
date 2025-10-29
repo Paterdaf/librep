@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strchr.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 15:57:02 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/21 16:10:23 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/22 11:02:52 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/22 15:04:21 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*strchr(const char *s, int c)
+static int	ft_abs(int j)
 {
-	int		i;
-	char	*text;
-
-	while (s[i])
-	{
-		if (s[i] == c)
-		{
-			//TODO : assigner le 1e element de text a l'element actuel de s
-			return (text);
-		}
-		i++;
-	}
-	return (0);
+	if (j < 0)
+		return (-j);
+	return (j);
 }
 
-int	main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	strchr("step by step", 'b');
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (ft_abs(s1[i]) - ft_abs(s2[i]));
+		i++;
+	}
 	return (0);
 }

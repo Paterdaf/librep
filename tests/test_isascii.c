@@ -6,30 +6,28 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:18:00 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/20 16:11:49 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/28 10:01:45 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtest.h"
-#include "../ft_isascii.c"
 
-int run_isascii_tests(t_test_unit *tests, int count)
+int run_isascii_tests(int count, t_test_unit *tests)
 {
 	int	i;
-	int error;
-	int	result;
-	int	expected_result;
+	int correct;
 
 	i = 0;
-	error = 0;
+	correct = 0;
 	while (i < count)
 	{
-		result = ft_isascii(tests[i].c);
-		expected_result = isascii(tests[i].c);
-		error += !(print_result((result == expected_result), tests[i].desc, i+1));
+		correct +=  print_result((ft_isalnum(tests[i].c) == isalnum(tests[i].c)),
+					tests[i].desc, i+1);
+		printf	(GREY "  Expected : %d, got : %d\n",
+				isalnum(tests[i].c), ft_isalnum(tests[i].c));
 		i++;
 	}
-	return (error);
+	return (correct);
 }
 
 int	create_isascii_tests(void)
@@ -52,7 +50,6 @@ int	create_isascii_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	printf("isascii :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	return(run_is_tests(count, tests, isascii, ft_isascii));
+	return(run_isascii_tests(count, tests) == count);
 }

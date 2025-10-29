@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 09:37:18 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/28 14:13:41 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/22 15:38:03 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/24 16:49:40 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t		i;
-	char		*str_dest;
-	const char	*str_src;
+	int		i;
+	char	*res;
 
-	str_dest = (char *)dest;
-	str_src = (const char *)src;
-	if (str_src < str_dest)
-	{
-		while (n)
-		{
-			n--;
-			str_dest[n] = str_src[n];
-		}
-		return (dest);
-	}
 	i = 0;
-	while (n)
+	res = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!res)
+		return (0);
+	while (s[i])
 	{
-		n--;
-		str_dest[i] = str_src[i];
+		res[i] = s[i];
 		i++;
 	}
-	return (dest);
+	res[i] = 0;
+	return (res);
 }

@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_memset.c                                      :+:      :+:    :+:   */
+/*   test_strlcpy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:32:20 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/28 15:07:21 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/28 14:15:46 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/28 14:28:41 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <string.h>
 #include "libtest.h"
+#include <bsd/string.h>
 
-int	run_memset_tests(int count, t_test_unit *tests)
+int run_strlcpy_tests(int count, t_test_unit *tests)
 {
-	int		i;
-	int		correct;
-	char	*result;
-	char	*expected_result;
+	int i;
+	int correct;
 
 	i = 0;
 	correct = 0;
 	while (i < count)
 	{
-		result = ft_memset(tests[i].s, tests[i].c, tests[i].n);
-		expected_result = memset(tests[i].s, tests[i].c, tests[i].n);
-		correct += print_result(!strcmp(result, expected_result), tests[i].desc, i + 1);
-		printf	(GREY "\tExpected : %s, got : %s\n", expected_result, result);
+		ft_strlcpy(tests[i].dest, tests[i].src, tests[i].n);
+//		strlcpy(tests[i].dest, tests[i].src, tests[i].n);
+		correct += print_result(!strcmp(tests[i].dest, tests[i].result), tests[i].desc, i+1);
+		printf  (GREY "\tExpected : %s, got : %s\n",
+				(char *)tests[i].result, (char *)tests[i].dest);
 		i++;
 	}
 	return (correct);
 }
 
-int create_memset_tests(void)
+int	create_strlcpy_tests(void)
 {
-	int count;
-	t_test_unit tests[] =
+	int			count;
+	t_test_unit	tests[] =
 	{
 		{.desc = "",
-		 .s = "",
-		 .c = 0,
-		 .n = 0}
+		.dest = "",
+		.src = "",
+		.n = 0,
+		.result = ""}
 	};
-
+	
 	count = sizeof(tests)/sizeof(tests[0]);
-	return (run_memset_tests(count, tests) == count);
+	return (run_strlcpy_tests(count, tests) == count);
 }

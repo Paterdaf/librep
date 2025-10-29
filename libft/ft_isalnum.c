@@ -6,12 +6,12 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:11:31 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/16 10:49:31 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/28 10:39:22 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	return ((ft_isalpha(c) || ft_isdigit(c)) << 3);
 }

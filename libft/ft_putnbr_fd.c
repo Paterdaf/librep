@@ -1,40 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 09:37:18 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/28 14:13:41 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/22 16:14:42 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/23 10:06:17 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t		i;
-	char		*str_dest;
-	const char	*str_src;
-
-	str_dest = (char *)dest;
-	str_src = (const char *)src;
-	if (str_src < str_dest)
-	{
-		while (n)
-		{
-			n--;
-			str_dest[n] = str_src[n];
-		}
-		return (dest);
-	}
-	i = 0;
-	while (n)
-	{
-		n--;
-		str_dest[i] = str_src[i];
-		i++;
-	}
-	return (dest);
+	ft_putstr_fd(ft_itoa(n), fd);
 }

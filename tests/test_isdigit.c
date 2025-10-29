@@ -6,29 +6,27 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:07:54 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/20 16:12:24 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/28 10:02:24 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libtest.h"
-#include "../ft_isdigit.c"
 
-int run_isdigit_tests(t_test_unit *tests, int count)
+int run_isdigit_tests(int count, t_test_unit *tests)
 {
-	int	i;
-	int error;
-	int	result;
-	int	expected_result;
+	int i;
+	int correct;
 
 	i = 0;
-	error = 0;
+	correct = 0;
 	while (i < count)
 	{
-		result = ft_isdigit(tests[i].c);
-		expected_result = isdigit(tests[i].c);
-		error += !(print_result((result == expected_result), tests[i].desc, i+1));
+		correct +=  print_result((ft_isdigit(tests[i].c) == isdigit(tests[i].c)),
+					tests[i].desc, i+1);
+		printf  (GREY " Expected : %d, got : %d\n",
+				isdigit(tests[i].c), ft_isdigit(tests[i].c));
 		i++;
 	}
-	return (error);
+	return (correct);
 }
 
 int	create_isdigit_tests(void)
@@ -51,7 +49,6 @@ int	create_isdigit_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	printf("isdigit :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	return(run_is_tests(count, tests, isdigit, ft_isdigit));
+	return(run_isdigit_tests(count, tests) == count);
 }

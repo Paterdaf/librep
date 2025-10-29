@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 09:37:18 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/28 14:13:41 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/22 13:55:29 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/22 14:54:19 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t		i;
-	char		*str_dest;
-	const char	*str_src;
+	int	res;
+	int	i;
+	int	sign;
 
-	str_dest = (char *)dest;
-	str_src = (const char *)src;
-	if (str_src < str_dest)
-	{
-		while (n)
-		{
-			n--;
-			str_dest[n] = str_src[n];
-		}
-		return (dest);
-	}
+	res = 0;
+	sign = 1;
 	i = 0;
-	while (n)
+	while ((nptr[i] >= '\a' && nptr[i] <= '\r') || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '+')
+		i++;
+	else if (nptr[i] == '-')
 	{
-		n--;
-		str_dest[i] = str_src[i];
+		sign = -1;
 		i++;
 	}
-	return (dest);
+	if (!ft_isdigit(nptr[i]))
+		return (0);
+	while (ft_isdigit(nptr[i]))
+	{
+		res = (10 * res) + (nptr[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

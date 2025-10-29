@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 09:37:18 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/28 14:13:41 by dloic            ###   ########.fr       */
+/*   Created: 2025/10/22 12:43:39 by dloic             #+#    #+#             */
+/*   Updated: 2025/10/28 16:23:47 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+static int	ft_abs(int j)
+{
+	if (j < 0)
+		return (-j);
+	return (j);
+}
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t		i;
-	char		*str_dest;
-	const char	*str_src;
+	const char	*s1_str;
+	const char	*s2_str;
 
-	str_dest = (char *)dest;
-	str_src = (const char *)src;
-	if (str_src < str_dest)
-	{
-		while (n)
-		{
-			n--;
-			str_dest[n] = str_src[n];
-		}
-		return (dest);
-	}
 	i = 0;
-	while (n)
+	s1_str = (const char *)s1;
+	s2_str = (const char *)s2;
+	while (i < n)
 	{
-		n--;
-		str_dest[i] = str_src[i];
+		if(s1_str[i] != s2_str[i])
+			return (ft_abs(s1_str[i]) - ft_abs(s2_str[i]));
 		i++;
 	}
-	return (dest);
+	return (0);
 }

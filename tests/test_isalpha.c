@@ -6,29 +6,27 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:20:14 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/20 16:11:09 by dloic            ###   ########.fr       */
+/*   Updated: 2025/10/28 10:01:04 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libtest.h"
-#include "../ft_isalpha.c"
 
-int run_isalpha_tests(t_test_unit *tests, int count)
+int run_isalpha_tests(int count, t_test_unit *tests)
 {
 	int	i;
-	int error;
-	int	result;
-	int	expected_result;
+	int correct;
 
 	i = 0;
-	error = 0;
+	correct = 0;
 	while (i < count)
 	{
-		result = ft_isalpha(tests[i].c);
-		expected_result = isalpha(tests[i].c);
-		error += !(print_result((result == expected_result), tests[i].desc, i+1));
+		correct +=  print_result((ft_isalpha(tests[i].c) == isalpha(tests[i].c)),
+					tests[i].desc, i+1);
+		printf  (GREY " Expected : %d, got : %d\n",
+				isalpha(tests[i].c), ft_isalpha(tests[i].c));
 		i++;
 	}
-	return (error);
+	return (correct);
 }
 
 int	create_isalpha_tests(void)
@@ -51,7 +49,6 @@ int	create_isalpha_tests(void)
 		{.desc = "valeur negative",
 		 .c = -5}
 	};
-	printf("isalpha :\n");
 	count = sizeof(tests)/sizeof(tests[0]);
-	return (run_is_tests(count, tests, isalpha, ft_isalpha));
+	return (run_isalpha_tests(count, tests) == count);
 }
