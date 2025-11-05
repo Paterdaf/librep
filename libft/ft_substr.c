@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:08:23 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/29 11:56:07 by dloic            ###   ########.fr       */
+/*   Updated: 2025/11/03 11:56:05 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,15 +15,21 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	int		size;
 	char	*res;
 
+	size = len;
+	if (start + len > ft_strlen(s))
+		size = ft_strlen(s) - start;
+	if (size < 0)
+		size = 0;
 	if (!s)
 		return (0);
-	res = malloc(sizeof(char) * (len + 1));
+	res = malloc(sizeof(char) * (size + 1));
 	if (!res)
 		return (0);
 	i = 0;
-	while (s[start + i] && i < len && start < ft_strlen(s))
+	while (i < len && (start + i) < ft_strlen(s))
 	{
 		res[i] = s[start + i];
 		i++;
@@ -31,14 +37,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res[i] = 0;
 	return (res);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char	*res;
-
-	res = ft_substr("tripouille", 100, 1);
-	printf("ret : %s\n", res);
-	return (0);
-}
-*/

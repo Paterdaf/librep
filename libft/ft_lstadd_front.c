@@ -1,37 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 15:57:02 by dloic             #+#    #+#             */
-/*   Updated: 2025/11/03 10:04:08 by dloic            ###   ########.fr       */
+/*   Created: 2025/11/03 14:40:03 by dloic             #+#    #+#             */
+/*   Updated: 2025/11/03 16:14:24 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int	i;
-
-	i = 0;
-	if (c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return (0);
+	new->next = *lst;
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	printf("ret : %s\n", strchr("casquette", 'f'));
-	return (0);
-}
-*/

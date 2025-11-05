@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 15:07:16 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/29 11:21:03 by dloic            ###   ########.fr       */
+/*   Updated: 2025/11/03 13:56:55 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,8 +16,13 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*res;
 
-	if (size && nmemb > 2147483647/size)
+	if (size && (nmemb * size) / size != nmemb)
 		return (0);
+	if (!nmemb || !size)
+	{
+		nmemb = 1;
+		size = 1;
+	}
 	res = malloc(size * nmemb);
 	if (!res)
 		return (0);

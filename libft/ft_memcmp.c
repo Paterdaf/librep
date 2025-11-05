@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:43:39 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/28 16:23:47 by dloic            ###   ########.fr       */
+/*   Updated: 2025/11/03 11:24:25 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -29,7 +29,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	s2_str = (const char *)s2;
 	while (i < n)
 	{
-		if(s1_str[i] != s2_str[i])
+		if (s1_str[i] != s2_str[i])
 			return (ft_abs(s1_str[i]) - ft_abs(s2_str[i]));
 		i++;
 	}

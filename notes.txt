@@ -1,0 +1,3 @@
+1. verifier ses strings
+2. ajouter libft au Makefile
+3. unsigned long long pour atoi

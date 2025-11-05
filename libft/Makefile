@@ -6,7 +6,7 @@
 #    By: dloic <dloic@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 15:09:10 by dloic             #+#    #+#              #
-#    Updated: 2025/10/28 10:55:43 by dloic            ###   ########.fr        #
+#    Updated: 2025/11/03 16:04:09 by dloic            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,19 +25,28 @@ CFILES = 	ft_atoi.c ft_bzero.c ft_calloc.c \
 			ft_strtrim.c ft_substr.c ft_tolower.c \
 			ft_toupper.c
 OFILES = $(CFILES:.c=.o)
-LIBNAME = libft.a
+BFILES =	ft_lstnew.c ft_lstadd_front.c \
+			ft_lstsize.c ft_lstlast.c \
+			ft_lstadd_back.c ft_lstdelone.c \
+			ft_lstclear.c ft_lstiter.c \
+			ft_lstmap.c
+OBFILES = $(BFILES:.c=.o)
+NAME = libft.a
 
-all: $(LIBNAME)
+all: $(NAME)
 
-$(LIBNAME): $(OFILES)
-	ar r $(LIBNAME) $(OFILES)
+$(NAME): $(OFILES)
+	ar rcs $(NAME) $(OFILES)
 
 clean:
 	rm -f $(OFILES)
 
 fclean: clean
-	rm -f $(LIBNAME)
+	rm -f $(NAME)
 
-re: fclean $(LIBNAME)
+re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+bonus: $(OFILES) $(OBFILES)
+	ar rcs $(name) $(OFILES) $(OBFILES)
+
+.PHONY: all clean fclean re bonus

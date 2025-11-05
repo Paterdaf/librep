@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:13:18 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/27 11:24:03 by dloic            ###   ########.fr       */
+/*   Updated: 2025/11/03 13:47:28 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,12 +35,12 @@ static int	count_words(char const *s, char c)
 	return (res);
 }
 
-static void	*free_all(char	**array)
+static void	*free_all(char	**array, int len)
 {
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (i < len)
 	{
 		free(array[i]);
 		i++;
@@ -66,14 +66,11 @@ char	**ft_split(char const *s, char c)
 		while (s[i] == c)
 			i++;
 		len = (char *)ft_strchr(s + i, c) - (char *)(s + i);
-		if (len <= 0)
-			len = ft_strlen(s) - ft_strlen(s + i);
-		res[words_index] = malloc(sizeof(char) * (len + 1));
-		if (!res[words_index])
-			return (free_all(res));
+		if (!ft_strchr(s + i, c))
+			len = ft_strlen(s + i);
 		res[words_index] = ft_substr(s, i, len);
 		if (!res[words_index])
-			return (free_all(res));
+			return (free_all(res, words_index));
 		i += len;
 		words_index++;
 	}
@@ -96,7 +93,7 @@ int	main(void)
 	}
 	if (!res[0])
 		printf("vide\n");
-	free_all(res);
+	free_all(res, sizeof(res) - 1);
 	return (0);
 }
 */

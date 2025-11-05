@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 15:57:02 by dloic             #+#    #+#             */
-/*   Updated: 2025/11/03 10:04:08 by dloic            ###   ########.fr       */
+/*   Created: 2025/11/03 14:28:53 by dloic             #+#    #+#             */
+/*   Updated: 2025/11/03 16:13:47 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstnew(void *content)
 {
-	int	i;
+	t_list	*new;
 
-	i = 0;
-	if (c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return (0);
+	new = malloc(sizeof(t_list *));
+	if (!new)
+		return (0);
+	new->content = content;
+	return (new);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	printf("ret : %s\n", strchr("casquette", 'f'));
-	return (0);
-}
-*/

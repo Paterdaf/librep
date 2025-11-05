@@ -1,56 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 16:11:37 by dloic             #+#    #+#             */
-/*   Updated: 2025/11/03 11:24:00 by dloic            ###   ########.fr       */
+/*   Created: 2025/11/03 15:34:34 by dloic             #+#    #+#             */
+/*   Updated: 2025/11/03 16:09:30 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 #include <stdlib.h>
 
-static int	create_res(int n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		len;
+	t_list	*tmp;
+	t_list	*res;
 
-	if (n == 0)
-		return (1);
-	len = 0;
-	if (n < 0)
-		len++;
-	while (n)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
-}
-
-char	*ft_itoa(int n)
-{
-	int		len;
-	int		index;
-	char	*res;
-
-	len = create_res(n);
-	index = len;
-	res = malloc(sizeof(char) * (len + 1));
+	res = ft_lstnew(f(lst.content));
 	if (!res)
 		return (0);
-	res[0] = 0;
-	if (n > 0)
-		n = -n;
-	else if (n < 0)
-		res[0] = '-';
-	while (index > (res[0] == '-'))
+	res.next = tmp;
+	while (lst.next)
 	{
-		index--;
-		res[index] = -(n % 10) + '0';
-		n = n / 10;
+		tmp = ft_lstnew(f(lst.next.content));
+		if (!tmp)
+			{
+				ft_lstclear(res, del);
+				return (0);
+			}
+		tmp = tmp.next;
+		lst = lst.next;
 	}
-	res[len] = 0;
 	return (res);
 }

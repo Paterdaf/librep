@@ -6,7 +6,7 @@
 /*   By: dloic <dloic@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:10:38 by dloic             #+#    #+#             */
-/*   Updated: 2025/10/29 13:31:31 by dloic            ###   ########.fr       */
+/*   Updated: 2025/11/03 14:07:25 by dloic            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -40,11 +40,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	return (ft_substr(s1, start, end - start));
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	printf("ret : %s\n", ft_strtrim("abcdba", "abc"));
-	return (0);
-}
-*/
