@@ -6,7 +6,7 @@
 #    By: dloic <dloic@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 15:09:10 by dloic             #+#    #+#              #
-#    Updated: 2025/11/12 15:34:46 by dloic            ###   ########.fr        #
+#    Updated: 2025/11/12 15:44:10 by dloic            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ BONUS_FILES =	ft_lstnew ft_lstadd_front \
 				ft_lstadd_back ft_lstdelone \
 				ft_lstclear ft_lstiter \
 				ft_lstmap
-SRCS = $(addprefix $(SRC_DIR)/, $(FILES:=.o))
-BONUS_SRCS = $(addprefix $(BONUS_DIR)/, $(FILES:=.o))
+SRCS = $(addprefix $(SRC_DIR)/, $(FILES:=.c))
+BONUS_SRCS = $(addprefix $(SRC_DIR)/, $(FILES:=.c))
 OBJS = $(addprefix $(OBJ_DIR)/, $(FILES:=.o))
 BONUS_OBJS = $(addprefix $(OBJ_DIR)/, $(BONUS_FILES:=.o))
 
