@@ -6,7 +6,7 @@
 #    By: dloic <dloic@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 15:09:10 by dloic             #+#    #+#              #
-#    Updated: 2025/11/12 15:44:10 by dloic            ###   ########.fr        #
+#    Updated: 2025/11/17 13:56:23 by dloic            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ fclean: clean
 
 re: fclean $(NAME)
 
-bonus: $(OBJ_DIR) $(OFILES) $(OBFILES)
-	ar rcs $(name) $(OBJ_DIR)/$(OFILES) $(OBJ_DIR)/$(OBFILES)
+bonus: $(OBJ_DIR) $(OBJS) $(BONUS_OBJS)
+	ar rcs $(name) $(OBJS) $(BONUS_OBJS)
 
 .PHONY: all clean fclean re bonus
